@@ -20,6 +20,14 @@ public class CountryRepositoryTest {
     @Autowired
     private CountryRepository countryDAO;
 
+
+    @Test
+    void NombrePopulationTest() {
+        assertEquals(countryDAO.NombrePopulation(1), 12);
+    }
+
+
+
     @Test
     void lesNomsDePaysSontTousDifferents() {
         log.info("On vérifie que les noms de pays sont tous différents ('unique') dans la table 'Country'");
@@ -43,4 +51,8 @@ public class CountryRepositoryTest {
         assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
     }
 
+    @Test
+    void listCountriesTest() {
+        assertEquals(countryDAO.ListCountries().size(), countryDAO.count());
+    }
 }
